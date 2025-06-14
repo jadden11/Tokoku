@@ -1,7 +1,12 @@
+'use client';
+
 import { ChevronDown, Phone, Search, ShoppingCart, UserRound } from 'lucide-react'
 import React from 'react'
+import { useCart } from '../../../context/CartContext'
 
 const Navbar = () => {
+
+ const { cart } = useCart();
  return (
   // Pembungkus utama untuk memusatkan konten dan memberikan lebar maksimum
   <div>
@@ -78,9 +83,14 @@ const Navbar = () => {
       <span className="hidden md:inline">Akun</span> {/* Sembunyikan teks di mobile jika ruang sempit */}
      </div>
      {/* Bagian Keranjang */}
-     <div className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+     <div className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors relative">
       <ShoppingCart size={20} />
-      <span className="hidden md:inline">Keranjang</span> {/* Sembunyikan teks di mobile jika ruang sempit */}
+      <span className="hidden md:inline">Keranjang</span>
+      {cart.length > 0 && (
+       <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+        {cart.length}
+       </span>
+      )}
      </div>
     </div>
    </nav>
