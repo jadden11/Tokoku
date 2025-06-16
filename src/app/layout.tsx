@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Montserrat, Lato, Poppins } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "../../context/CartContext";
+import { SearchProvider } from "../../context/SearchContext";
+import { FilterProvider } from "../../context/FilterContext";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -23,6 +25,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Tokoku.co.id",
   description: "Tokoku web ecommerce indonesia",
+  icons: {
+    icon: "https://img.icons8.com/?size=100&id=f7YuD8wpP3u8&format=png&color=000000",
+  }
 };
 
 export default function RootLayout({
@@ -36,7 +41,11 @@ export default function RootLayout({
         className={`${montserrat.variable} ${lato.variable} ${poppins.variable} antialiased`}
       >
         <CartProvider>
-          {children}
+          <SearchProvider>
+            <FilterProvider>
+              {children}
+            </FilterProvider>
+          </SearchProvider>
         </CartProvider>
       </body>
     </html>
