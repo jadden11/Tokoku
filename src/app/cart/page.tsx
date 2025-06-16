@@ -1,8 +1,8 @@
 // app/cart/page.tsx
 'use client';
 
-import { useCart } from '../../../context/CartContext';
 import Image from 'next/image';
+import { useCart } from '../../../context/CartContext';
 import Link from 'next/link';
 
 export default function CartPage() {
@@ -25,11 +25,9 @@ export default function CartPage() {
     <div className="grid gap-6">
      {cart.map((item) => (
       <div key={item.id} className="flex items-center gap-4 border rounded-xl p-4 bg-white shadow">
-       <img
+       <Image
         src={item.thumbnail}
         alt={item.title}
-        width={80}
-        height={80}
         className="rounded-lg object-cover"
        />
        <div className="flex-grow">

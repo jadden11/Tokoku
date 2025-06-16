@@ -3,7 +3,6 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useCart } from '../../../context/CartContext';
 import { useSearch } from '../../../context/SearchContext';
 import { ChevronDown, Phone, Search, ShoppingCart, UserRound } from 'lucide-react';
@@ -11,7 +10,6 @@ import CartSidebar from './CartSidebar';
 import { useState } from 'react';
 
 const Navbar = () => {
- const router = useRouter();
  const { searchTerm, setSearchTerm } = useSearch();
  const { cart } = useCart();
  const [isCartOpen, setIsCartOpen] = useState(false);

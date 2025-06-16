@@ -8,6 +8,7 @@ import { useCart } from "../context/CartContext";
 import { useEffect, useState } from "react";
 import { useSearch } from "../context/SearchContext";
 import { useFilter } from "../context/FilterContext";
+import Image from "next/image";
 
 type Product = {
   id: number;
@@ -77,10 +78,14 @@ export default function Products() {
           >
             <div className="bg-white rounded-xl overflow-hidden transition-all duration-300 transform group-hover:scale-105 group-hover:shadow-lg">
               <div className="relative w-full h-48 overflow-hidden">
-                <img
+                <Image
                   src={product.thumbnail}
                   alt={product.title}
+                  layout="fill" // Penting untuk mengisi container
+                  objectFit="cover" // Memastikan gambar menutupi area tanpa terdistorsi
                   className="rounded-t-lg transition-transform duration-300 group-hover:scale-110"
+                  // Tambahkan prop sizes untuk responsivitas yang lebih baik (penting!)
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                 />
                 <button
                   className="absolute top-3 right-3 bg-white bg-opacity-75 p-2 rounded-full shadow-md text-gray-500 hover:text-red-500 hover:bg-opacity-100 transition-all duration-200"
